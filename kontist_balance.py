@@ -21,7 +21,7 @@ query GetMeinsBalance {
 """
 
 
-def fetch_meins_balance(access_token: str) -> Any:
+def fetch_yours_balance(access_token: str) -> Any:
     """Return the API's spendable balance after tax and VAT calculations."""
     if not access_token.strip():
         raise ValueError("A non-empty Kontist access token is required.")
@@ -65,7 +65,7 @@ def fetch_meins_balance(access_token: str) -> Any:
 def main() -> int:
     access_token = os.environ.get("KONTIST_ACCESS_TOKEN", "")
     try:
-        balance = fetch_meins_balance(access_token)
+        balance = fetch_yours_balance(access_token)
     except (RuntimeError, ValueError) as error:
         print(f"Error: {error}", file=sys.stderr)
         return 1
